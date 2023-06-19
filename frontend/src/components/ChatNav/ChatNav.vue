@@ -26,6 +26,7 @@ const userStore = useUserStore();
 const navType = {
   github: 'github',
   version: 'version',
+  forum: 'forum',
   chatService: 'chatService',
   promptStore: 'promptStore',
   setToken: 'setToken',
@@ -34,11 +35,6 @@ const navType = {
   reset: 'reset',
 };
 const navConfigs = [
-  {
-    key: navType.github,
-    label: '开源地址',
-    url: 'https://github.com/adams549659584/go-proxy-bingai',
-  },
   {
     key: navType.version,
     label: '版本信息',
@@ -67,6 +63,21 @@ const navConfigs = [
   {
     key: navType.reset,
     label: '一键重置',
+  },
+  {
+    key: navType.forum,
+    label: '社区地址',
+    url: 'https://forum.xr21.me',
+  },
+  {
+    key: navType.github,
+    label: '开源地址',
+    url: 'https://github.com/adams549659584/go-proxy-bingai',
+  },
+  {
+    key: navType.github,
+    label: 'IDE Plugin X-ChatGPT',
+    url: 'https://plugins.jetbrains.com/plugin/21852-x-chatgpt',
   },
 ];
 

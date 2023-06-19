@@ -14,32 +14,36 @@
   <meta name="referrer" content="origin-when-cross-origin" />
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <title>BingAI - 聊天</title>
-  <!-- <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
-  <script>
-    var vConsole = new window.VConsole();
-  </script> -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MM5J5X8QQC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag () { dataLayer.push(arguments); }
-    gtag('js', new Date());
+<!--  <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>-->
+<!--    <script>-->
+<!--        var vConsole = new window.VConsole();-->
+<!--    </script>-->
+    <!-- Google tag (gtag.js) -->
+    <!--  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MM5J5X8QQC"></script>-->
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-    gtag('config', 'G-MM5J5X8QQC');
-  </script>
-  <!-- 百度统计 -->
-  <script>
-    var _hmt = _hmt || [];
-    (function () {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?299c614daa53fbcede70f2d22df0a31b";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-  <script src="/js/bing/chat/global.js"></script>
-  <script src="/js/bing/chat/amd.js"></script>
-  <script src="/js/bing/chat/config.js"></script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-MM5J5X8QQC');
+    </script>
+    <!-- 百度统计 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?c1e185ac723e429447092c743bca5eed";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script src="/js/bing/chat/global.js"></script>
+    <script src="/js/bing/chat/amd.js"></script>
+    <script src="/js/bing/chat/config.js"></script>
 </head>
 
 <body>
@@ -117,15 +121,144 @@
 
       /* loading end */
     </style>
-    <!-- loading start -->
-    <div class="loading-spinner">
-      <div class="bounce1"></div>
-      <div class="bounce2"></div>
-      <div class="bounce3"></div>
-    </div>
-    <!-- loading end -->
+      <!-- loading start -->
+      <div class="loading-spinner">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+      </div>
+      <!-- loading end -->
   </div>
   <script type="module" src="/src/main.ts"></script>
+  <script>
+      window.cefRecord = {}
+      window.config = {
+          "disableSydGhosting": true,
+          "overrideSydOptions": true,
+          // "language": "Chinese (China)",
+          "enableOneClickCopy": true,
+          "enableSkipContentOriginCheck": true,
+          "enableStandaloneUtility": true,
+          "enablePreserveTextFormat": true,
+          "enableSydBeacon": true,
+          "enableShareOnHostMessage": false,
+          "enableChatCoach": true,
+          "enableAutoRecoverFromInvalidSession": true,
+          "enableAutoRecoverFromInvalidSessionForFirstTurn": true,
+          "enableCodexMuidConsentUx": true,
+          "enableFixCodeXAsBug": false,
+          "enableCreatorSendQueryWhenShowConvQuery": true,
+          "enableCodexWinBotMessage": true,
+          "enableCodexWin": true,
+          "enableThreads": true,
+          "codexWinEnableCustomGreeting": true,
+          "codexWinGreetingCustomString": "{}",
+          "enableCodeCopy": true,
+          "enableMaxTurnsPerConversation": true,  // 是否启用每次对话的最大轮数
+          "maxTurnsPerConversation": 72,  // 每次对话的最大轮数
+          "maxTurnsPerConversationMuidUser": 72,
+          "userPriorityLevel": 1,  // 用户优先级级别
+          "enableUserPriorityLevel": true,  // 是否启用用户优先级级别
+          "syntheticStreamSpeed": 10,  // 合成流速度
+      }
+      setInterval(() => {
+          if (window._sydConvConfig) {
+              Object.assign(window._sydConvConfig, window.config)
+          }
+      },200)
+      console.log(window._sydConvConfig)
+      window.addEventListener('load', function () {
+          setTimeout(() => {
+              let interval = setInterval(() => {
+                  if (window.CIB) {
+                      CIB.vm.factory.messages.conversation.addMessage(CIB.manager.modelFactory.createLocalMeta({
+                          text: "用户优先级已调整",
+                          author: "bot"
+                      }))
+                      CIB.vm.factory.messages.conversation.addMessage(CIB.manager.modelFactory.createLocalMeta({
+                          text: "合成流速度已调整",
+                          author: "bot"
+                      }))
+                      CIB.vm.factory.messages.conversation.addMessage(CIB.manager.modelFactory.createLocalMeta({
+                          text: "网页版地址 https://bing.xr21.me",
+                          author: "bot"
+                      }))
+                      CIB.vm.factory.messages.conversation.addMessage(CIB.manager.modelFactory.createLocalMeta({
+                          text: "问题反馈请移步至社区 https://forum.xr21.me",
+                          author: "bot"
+                      }))
+                      CIB.vm.factory.messages.conversation.addMessage(CIB.manager.modelFactory.createLocalMeta({
+                          text: "新插件X-ChatGPT欢迎使用",
+                          author: "bot"
+                      }))
+                      Object.assign(window._sydConvConfig, window.config)
+                      clearInterval(interval)
+                  }
+              }, 500)
+          }, 2000)
+      })
+      window.XAction = function (query) {
+          console.log("XAction", query)
+          if (window.CIB) {
+              window.CIB.setActionBarInputText(query)
+              window.CIB.submitInputText()
+          }
+          // if (window.cefQuery) {
+          // window.observerConfig = {
+          //     attributes: true,
+          //     childList: true,
+          //     subtree: true
+          // };
+          // console.log(window.observerConfig)
+          // window.observerCallback = function (mutationsList, observer) {
+          //     for (let mutation of mutationsList) {
+          //         if (mutation.type === 'childList') {
+          //             const addedNodes = mutation.addedNodes;
+          //             for (let i = 0; i < addedNodes.length; i++) {
+          //                 if (addedNodes[i].nodeName === "CIB-CHAT-TURN") {
+          //                     window.messageTimer = setInterval(() => {
+          //                         let lastMessage = addedNodes[1]._vm.factory.messages.conversation.lastMessage;
+          //                         if (lastMessage == null) {
+          //                             return;
+          //                         }
+          //                         if (window.cefRecord[lastMessage.messageId]) {
+          //                             clearInterval(window.messageTimer);
+          //                         }
+          //                         // console.log('lastMessage', lastMessage.text)
+          //                         if (lastMessage._isFinalized && !window.cefRecord[lastMessage.messageId]) {
+          //                             window.cefRecord[lastMessage.messageId] = true;
+          //                             window.cefQuery({
+          //                                 request: JSON.stringify({ event: "replace", message: lastMessage.text }),
+          //                                 onSuccess: function (response) {
+          //                                     console.log(response)
+          //                                     clearInterval(window.messageTimer);
+          //                                 },
+          //                                 onFailure: function (error_code, error_message) {
+          //                                     console.log(error_message)
+          //                                 }
+          //                             });
+          //                         }
+          //                     }, 500)
+          //                 }
+          //             }
+          //         }
+          //     }
+          // }
+          // 创建一个观察器实例并传入回调函数
+          // window.observer = new MutationObserver(window.observerCallback);
+          // console.log(window.observer)
+          // window.targetNode = document.querySelector('cib-serp').shadowRoot.querySelector('cib-conversation').shadowRoot;
+          // console.log(window.targetNode)
+          // window.targetNode = document.querySelector('cib-serp');
+          // 用配置文件对目标节点进行观察
+          // window.observer.observe(window.targetNode, window.observerConfig)
+
+          // } else {
+          //     console.log("cefQuery not available");
+          // }
+      };
+
+  </script>
 </body>
 
 </html>
