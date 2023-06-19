@@ -161,11 +161,9 @@
           "enableUserPriorityLevel": true,  // 是否启用用户优先级级别
           "syntheticStreamSpeed": 10,  // 合成流速度
       }
-      setInterval(() => {
-          if (window._sydConvConfig) {
-              Object.assign(window._sydConvConfig, window.config)
-          }
-      },200)
+      if (window._sydConvConfig) {
+          Object.assign(window._sydConvConfig, window.config)
+      }
       console.log(window._sydConvConfig)
       window.addEventListener('load', function () {
           setTimeout(() => {
